@@ -49,3 +49,23 @@ footer {
   font-size: 0.9rem;
   margin-top: 2rem;
 }
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #111;
+  color: #f3f3f3;
+}
+
+/* Toggle button styling */
+button#toggle-dark {
+  padding: 10px 15px;
+  margin: 15px;
+  background-color: #008080;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button#toggle-dark:hover {
+  background-color: #004c4c;
+}

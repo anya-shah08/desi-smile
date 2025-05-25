@@ -10,3 +10,7 @@ console.log("Hi! Thanks for visiting Desi Smile. Built with 💖 by Anya Shah");
 window.addEventListener("scroll", function () {
   console.log("You're scrolling! Keep exploring the Desi Smile experience 🌿");
 });
+// Toggle dark mode on button click
+document.getElementById("toggle-dark").addEventListener("click", function () {
+  document.body.classList.toggle("dark-mode");
+});
