@@ -23,9 +23,6 @@ header p {
   margin-top: 0.5rem;
 }
 
-main {
-  
-}
 
 .intro h2 {
   color: #2a9d8f;
@@ -52,45 +49,17 @@ footer {
 /* Dark mode styles */
 body.dark-mode {
   background-color: #111;
-  color: #f3f3f3;
+  color: #f3f3f3; /* main text color */
 }
 
-body.dark-mode h1 {
-  color: #ffde59; /* Soft yellow for better contrast */
+h1, h2, h3, p, footer {
+  color: #ccc; /* lighter grey so text is visible on dark bg */
 }
 
-body.dark-mode footer {
-  color: #ccc; /* Lighter footer text */
+#main-title {
+  color: #bbb; /* example for your Desi Smile title */
 }
 
-/* Toggle button styling */
-button#toggle-dark {
-  padding: 10px 15px;
-  margin: 15px;
-  background-color: #008080;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-button#toggle-dark:hover {
-  background-color: #004c4c;
-}
-
-ul {
-
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.tagline {
-  font-size: 1.1rem;
-  margin-top: 10px;
-  color: #222; /* default light mode */
-}
-
-body.dark-mode .tagline {
-  color: #ccc; /* softer gray for dark mode */
+footer {
+  color: #bbb; /* footer text color for dark mode */
 }
