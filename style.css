@@ -16,6 +16,76 @@ header {
 header h1 {
   margin: 0;
   font-size: 2.5rem;
+  color: #333; /* default color */
+}
+
+header p {
+  font-style: italic;
+  margin-top: 0.5rem;
+  color: #555; /* default color */
+}
+
+.intro h2 {
+  color: #2a9d8f;
+}
+
+.features h3 {
+  margin-top: 2rem;
+  color: #e76f51;
+}
+
+ul {
+  padding-left: 1.5rem;
+  list-style-position: inside; /* fixes bullet position */
+  color: #333; /* default color */
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #fef6e4;
+  border-top: 1px solid #f4a261;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+  color: #333; /* default color */
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #111;
+  color: #f3f3f3;
+}
+
+body.dark-mode header {
+  background-color: #2a2a2a;
+  border-bottom-color: #555;
+}
+
+body.dark-mode header h1,
+body.dark-mode header p,
+body.dark-mode .intro h2,
+body.dark-mode .features h3,
+body.dark-mode ul,
+body.dark-mode footer {
+  color: #bbb; /* lighter grey for all main text */
+}
+
+/* specifically for your main title */
+body.dark-mode #main-title {
+  color: #bbb;
+}
+
+/* fix bullet points in dark mode */
+body.dark-mode ul {
+  color: #bbb;
+}
+
+/* You can add hover styles for buttons in dark mode if you want */
+
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
 }
 
 header p {
