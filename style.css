@@ -1,8 +1,8 @@
 body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  background: #fffdf7;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+  background-color: #fff;
   color: #333;
 }
 
@@ -24,7 +24,7 @@ header p {
 }
 
 main {
-  padding: 2rem;
+  
 }
 
 .intro h2 {
@@ -37,7 +37,7 @@ main {
 }
 
 ul {
-  list-style-type: '🪥 ';
+  
   padding-left: 1.5rem;
 }
 
@@ -55,6 +55,14 @@ body.dark-mode {
   color: #f3f3f3;
 }
 
+body.dark-mode h1 {
+  color: #ffde59; /* Soft yellow for better contrast */
+}
+
+body.dark-mode footer {
+  color: #ccc; /* Lighter footer text */
+}
+
 /* Toggle button styling */
 button#toggle-dark {
   padding: 10px 15px;
@@ -68,4 +76,21 @@ button#toggle-dark {
 
 button#toggle-dark:hover {
   background-color: #004c4c;
+}
+
+ul {
+
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tagline {
+  font-size: 1.1rem;
+  margin-top: 10px;
+  color: #222; /* default light mode */
+}
+
+body.dark-mode .tagline {
+  color: #ccc; /* softer gray for dark mode */
 }

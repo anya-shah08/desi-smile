@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Desi Smile Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f3f3f3;
+      color: #333;
+      max-width: 600px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #008080;
+    }
+    .quiz-container {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .question {
+      margin-bottom: 15px;
+      font-weight: bold;
+    }
+    label {
+      display: block;
+      margin: 5px 0;
+      cursor: pointer;
+    }
+    button {
+      margin-top: 15px;
+      background-color: #008080;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #004c4c;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+      color: #004c4c;
+    }
+    nav {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    nav a {
+      color: #008080;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 15px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html"> Home 🏠 </a>
+  <a href="quiz.html"> Quiz 🦷 </a>
+</nav>
+
+<h1>What Kind of Smile Care Do You Need?</h1>
+
+<div class="quiz-container">
+  <form id="smileQuiz">
+    <div class="question">
+      1. How often do you brush your teeth?
+      <label><input type="radio" name="q1" value="a" required> Once a day</label>
+      <label><input type="radio" name="q1" value="b"> Twice a day</label>
+      <label><input type="radio" name="q1" value="c"> After every meal</label>
+    </div>
+
+    <div class="question">
+      2. Do you experience sensitivity or pain in your teeth?
+      <label><input type="radio" name="q2" value="a" required> Yes, often</label>
+      <label><input type="radio" name="q2" value="b"> Sometimes</label>
+      <label><input type="radio" name="q2" value="c"> No</label>
+    </div>
+
+    <div class="question">
+      3. How often do you visit a dentist?
+      <label><input type="radio" name="q3" value="a" required> Rarely or never</label>
+      <label><input type="radio" name="q3" value="b"> Once a year</label>
+      <label><input type="radio" name="q3" value="c"> Twice a year or more</label>
+    </div>
+
+    <button type="submit">Get Your Results</button>
+  </form>
+
+  <div id="result"></div>
+</div>
+
+<script>
+  document.getElementById('smileQuiz').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // Get values of selected answers
+    const q1 = document.querySelector('input[name="q1"]:checked').value;
+    const q2 = document.querySelector('input[name="q2"]:checked').value;
+    const q3 = document.querySelector('input[name="q3"]:checked').value;
+
+    // Simple scoring system
+    let score = 0;
+
+    if (q1 === 'a') score += 1;
+    if (q2 === 'a') score += 1;
+    if (q3 === 'a') score += 1;
+
+    // Result logic
+    let resultText = '';
+
+    if (score >= 2) {
+      resultText = "You might need to visit a dentist soon and improve your oral care routine!";
+    } else if (score === 1) {
+      resultText = "Your smile care is okay but could use some improvements.";
+    } else {
+      resultText = "Great job! Keep up the excellent smile care habits!";
+    }
+
+    document.getElementById('result').textContent = resultText;
+  });
+</script>
+
+</body>
+</html>
