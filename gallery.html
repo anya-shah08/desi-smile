@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gallery & Testimonials – Desi Smile</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    header {
+      background-color: #008080;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    #toggle-dark {
+      margin: 10px auto;
+      display: block;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background-color: #004c4c;
+      color: white;
+    }
+
+    section {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode section {
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+    }
+
+    h2 {
+      text-align: center;
+      color: #008080;
+      margin-bottom: 20px;
+    }
+
+    /* Gallery Carousel */
+    .gallery-carousel {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      scroll-behavior: smooth;
+      padding-bottom: 10px;
+    }
+
+    .gallery-carousel img {
+      width: 250px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 12px;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+
+    .gallery-carousel img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+    }
+
+    .lightbox span {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      font-size: 40px;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Testimonials Carousel */
+    .testimonials {
+      position: relative;
+      height: 120px;
+      overflow: hidden;
+      margin-top: 30px;
+    }
+
+    .testimonial {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      padding: 15px 20px;
+      border-radius: 10px;
+      font-style: italic;
+      background: #f3f3f3;
+      transition: opacity 0.5s;
+    }
+
+    body.dark-mode .testimonial {
+      background: #2a2a2a;
+      color: #e0e0e0;
+    }
+
+    .testimonial.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .testimonial span {
+      display: block;
+      margin-top: 8px;
+      font-weight: bold;
+      text-align: right;
+      color: #008080;
+    }
+
+    body.dark-mode .testimonial span {
+      color: #00cccc;
+    }
+
+    @media(max-width: 600px) {
+      .gallery-carousel img {
+        width: 100%;
+        height: auto;
+      }
+
+      .testimonials {
+        height: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="toggle-dark">🌙 Toggle Dark Mode</button>
+
+  <header>
+    <h1>Desi Smile</h1>
+    <p>Your smile, your health, your heritage</p>
+    <nav>
+      <a href="index.html">🏠 Home</a> |
+      <a href="quiz.html">🧪 Smile Quiz</a> |
+      <a href="smile-tips.html">💌 Smile Tips</a> |
+      <a href="gallery.html">📸 Gallery</a>
+    </nav>
+  </header>
+
+  <section id="gallery-testimonials">
+    <h2>Our Happy Smiles 🦷✨</h2>
+
+    <!-- Gallery Carousel -->
+    <div class="gallery-carousel">
+      <img src="images/smile1.jpg" alt="Bright smile 1">
+      <img src="images/smile2.jpg" alt="Bright smile 2">
+      <img src="images/smile3.jpg" alt="Bright smile 3">
+      <img src="images/smile4.jpg" alt="Bright smile 4">
+      <img src="images/smile5.jpg" alt="Bright smile 5">
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+      <span id="closeLightbox">&times;</span>
+      <img id="lightboxImg" src="" alt="Enlarged Image">
+    </div>
+
+    <!-- Testimonials Carousel -->
+    <div class="testimonials">
+      <div class="testimonial active">
+        <p>“Desi Smile tips completely changed my oral care routine. My teeth have never felt better!”</p>
+        <span>- Priya K.</span>
+      </div>
+      <div class="testimonial">
+        <p>“I love how Desi Smile combines cultural remedies with modern dental advice. So helpful!”</p>
+        <span>- Aarav S.</span>
+      </div>
+      <div class="testimonial">
+        <p>“Finally, a dental resource that understands South Asian diets. Highly recommend!”</p>
+        <span>- Meera P.</span>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Desi Smile | Empowering South Asian dental wellness 🦷✨
+    <p>Built with 💖 by Anya Shah</p>
+  </footer>
+
+  <script>
+    // Dark mode toggle
+    document.getElementById("toggle-dark").addEventListener("click", function () {
+      document.body.classList.toggle("dark-mode");
+    });
+
+    // Lightbox functionality
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('closeLightbox');
+
+    document.querySelectorAll('.gallery-carousel img').forEach(img => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+      });
+    });
+
+    closeBtn.addEventListener('click', () => {
+      lightbox.style.display = 'none';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.style.display = 'none';
+    });
+
+    // Testimonial carousel
+    const testimonials = document.querySelectorAll('.testimonial');
+    let currentIndex = 0;
+
+    setInterval(() => {
+      testimonials[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % testimonials.length;
+      testimonials[currentIndex].classList.add('active');
+    }, 4000);
+  </script>
+</body>
+</html>
