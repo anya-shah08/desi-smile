@@ -7,17 +7,18 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<button id="toggle-dark">🌙 Toggle Dark Mode</button>
+  <!-- Dark mode toggle -->
+  <button id="toggle-dark">🌙 Toggle Dark Mode</button>
+
   <header>
     <h1>Desi Smile</h1>
     <p class="tagline">Your smile, your health, your heritage</p>
     <nav>
-  <a href="index.html">🏠 Home</a>
-  <a href="quiz.html">🦷 Take the Quiz</a>
-    <a href="smile-tips.html"> 💌 Smile Tips</a>
-    <a href="gallery.html">📸 Gallery</a>
-</nav>
-
+      <a href="index.html">🏠 Home</a>
+      <a href="quiz.html">🦷 Take the Quiz</a>
+      <a href="smile-tips.html">💌 Smile Tips</a>
+      <a href="gallery.html">📸 Gallery</a>
+    </nav>
   </header>
 
   <main>
@@ -36,11 +37,16 @@
     </section>
   </main>
 
-    <footer>
+  <footer>
     <p>© 2025 Desi Smile | Empowering South Asian dental wellness 🦷✨</p>
-    <p> Built with 💖 by Anya Shah</p>
+    <p>Built with 💖 by Anya Shah</p>
   </footer>
-  <script src="script.js"></script>
+
+  <script>
+    // Dark mode toggle
+    document.getElementById("toggle-dark").addEventListener("click", function () {
+      document.body.classList.toggle("dark-mode");
+    });
+  </script>
 </body>
 </html>
-
