@@ -157,6 +157,8 @@
       overflow: hidden;
       margin-top: 30px;
       border-radius: 12px;
+      padding: 0 50px; /* added padding so text isn't cut off by arrows */
+      box-sizing: border-box;
     }
 
     .testimonial {
@@ -169,6 +171,7 @@
       background: #e0f7f7;
       color: #004c4c;
       transition: opacity 0.5s;
+      box-sizing: border-box;
     }
 
     body.dark-mode .testimonial {
@@ -201,15 +204,15 @@
       background: #008080;
       color: white;
       border: none;
-      font-size: 24px;
-      padding: 8px 12px;
+      font-size: 20px; /* smaller so it doesn't obscure text */
+      padding: 6px 10px;
       border-radius: 50%;
       cursor: pointer;
       z-index: 10;
     }
 
-    #prevTestimonial { left: 10px; }
-    #nextTestimonial { right: 10px; }
+    #prevTestimonial { left: -25px; } /* move outside container */
+    #nextTestimonial { right: -25px; }
 
     body.dark-mode .testimonial-nav {
       background: #00cccc;
@@ -224,6 +227,7 @@
 
       .testimonials {
         min-height: auto;
+        padding: 0 20px;
       }
     }
   </style>
@@ -324,7 +328,7 @@
     const showTestimonial = (index) => {
       testimonials.forEach(t => t.classList.remove('active'));
       testimonials[index].classList.add('active');
-    }
+    };
 
     document.getElementById('prevTestimonial').addEventListener('click', () => {
       currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
@@ -336,19 +340,12 @@
       showTestimonial(currentIndex);
     });
 
+    // Auto-rotate testimonials
     setInterval(() => {
       currentIndex = (currentIndex + 1) % testimonials.length;
       showTestimonial(currentIndex);
-    }, 4000);
-
-    // Gallery arrows scroll
-    const gallery = document.querySelector('.gallery-carousel');
-    document.getElementById('prevGallery').addEventListener('click', () => {
-      gallery.scrollBy({ left: -260, behavior: 'smooth' });
-    });
-    document.getElementById('nextGallery').addEventListener('click', () => {
-      gallery.scrollBy({ left: 260, behavior: 'smooth' });
-    });
+    }, 7000);
   </script>
 </body>
 </html>
+
