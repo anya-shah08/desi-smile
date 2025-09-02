@@ -5,10 +5,121 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Smile Tips 💌 – Desi Smile</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      color: #333;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    header {
+      background-color: #008080;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    #toggle-dark {
+      margin: 10px auto;
+      display: block;
+      padding: 10px 15px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      background-color: #004c4c;
+      color: white;
+    }
+
+    section {
+      max-width: 600px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode section {
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+    }
+
+    h2 {
+      color: #008080;
+      text-align: center;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 12px;
+      background-color: #008080;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #004c4c;
+    }
+
+    #formMessage {
+      text-align: center;
+      margin-top: 15px;
+      font-weight: bold;
+      color: #008080;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      background-color: #f3f3f3;
+      color: #333;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode footer {
+      background-color: #1e1e1e;
+      color: #e0e0e0;
+    }
+  </style>
 </head>
 <body>
+  <button id="toggle-dark">🌙 Toggle Dark Mode</button>
+
   <header>
-    <h1 id="main-title">Desi Smile</h1>
+    <h1>Desi Smile</h1>
     <p>Your smile, your health, your heritage</p>
     <nav>
       <a href="index.html">🏠 Home</a> |
@@ -17,21 +128,37 @@
     </nav>
   </header>
 
-  <section class="intro">
-    <h2>Sign Up for Smile Tips 💌</h2>
-    <p>Want healthy teeth and a radiant smile? Get simple Desi-inspired tips in your inbox!</p>
-  </section>
-
   <section>
-    <p>Click below to sign up for Smile Tips 💌:</p>
-    <a href="https://eepurl.com/jkXlyk" rel="noopener noreferrer" class="subscribe-button">Subscribe Here 💌</a>
+    <h2>Subscribe to Smile Tips 💌</h2>
+    <p>Get simple Desi-inspired tips straight to your inbox!</p>
+
+    <form action="https://github.us11.list-manage.com/subscribe/post?u=241f5c3bc7f30dff2e9708aec&id=595f50b8fa" 
+          method="post" 
+          id="mc-embedded-subscribe-form" 
+          name="mc-embedded-subscribe-form" 
+          target="_blank">
+      <input type="email" name="EMAIL" placeholder="Your email" required>
+      <button type="submit">Subscribe 💌</button>
+    </form>
+
+    <p id="formMessage"></p>
   </section>
 
   <footer>
     &copy;  2025 Desi Smile | Empowering South Asian dental wellness 🦷✨
-    <p> Built with 💖 by Anya Shah </p>
+    <p>Built with 💖 by Anya Shah</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    // Dark mode toggle
+    document.getElementById("toggle-dark").addEventListener("click", function () {
+      document.body.classList.toggle("dark-mode");
+    });
+
+    // Newsletter form message
+    document.getElementById('mc-embedded-subscribe-form').addEventListener('submit', function() {
+      document.getElementById('formMessage').textContent = "Thanks for subscribing! 💌";
+    });
+  </script>
 </body>
 </html>
