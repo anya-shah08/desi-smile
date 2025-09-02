@@ -72,6 +72,10 @@
     }
 
     /* Gallery Carousel */
+    .gallery-wrapper {
+      position: relative;
+    }
+
     .gallery-carousel {
       display: flex;
       overflow-x: auto;
@@ -92,6 +96,29 @@
 
     .gallery-carousel img:hover {
       transform: scale(1.05);
+    }
+
+    /* Gallery arrows */
+    .gallery-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #008080;
+      color: white;
+      border: none;
+      font-size: 24px;
+      padding: 8px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    #prevGallery { left: 0; }
+    #nextGallery { right: 0; }
+
+    body.dark-mode .gallery-nav {
+      background: #00cccc;
+      color: #004c4c;
     }
 
     /* Lightbox modal */
@@ -126,25 +153,27 @@
     /* Testimonials Carousel */
     .testimonials {
       position: relative;
-      height: 120px;
+      min-height: 140px;
       overflow: hidden;
       margin-top: 30px;
+      border-radius: 12px;
     }
 
     .testimonial {
       position: absolute;
       width: 100%;
       opacity: 0;
-      padding: 15px 20px;
-      border-radius: 10px;
+      padding: 20px;
+      border-radius: 12px;
       font-style: italic;
-      background: #f3f3f3;
+      background: #e0f7f7;
+      color: #004c4c;
       transition: opacity 0.5s;
     }
 
     body.dark-mode .testimonial {
-      background: #2a2a2a;
-      color: #e0e0e0;
+      background: #004c4c;
+      color: #a0f0f0;
     }
 
     .testimonial.active {
@@ -164,6 +193,29 @@
       color: #00cccc;
     }
 
+    /* Testimonial arrows */
+    .testimonial-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #008080;
+      color: white;
+      border: none;
+      font-size: 24px;
+      padding: 8px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    #prevTestimonial { left: 10px; }
+    #nextTestimonial { right: 10px; }
+
+    body.dark-mode .testimonial-nav {
+      background: #00cccc;
+      color: #004c4c;
+    }
+
     @media(max-width: 600px) {
       .gallery-carousel img {
         width: 100%;
@@ -171,7 +223,7 @@
       }
 
       .testimonials {
-        height: auto;
+        min-height: auto;
       }
     }
   </style>
@@ -183,9 +235,9 @@
     <h1>Desi Smile</h1>
     <p>Your smile, your health, your heritage</p>
     <nav>
-      <a href="index.html">🏠 Home</a> |
-      <a href="quiz.html">🧪 Smile Quiz</a> |
-      <a href="smile-tips.html">💌 Smile Tips</a> |
+      <a href="index.html">🏠 Home</a>
+      <a href="quiz.html">🧪 Smile Quiz</a>
+      <a href="smile-tips.html">💌 Smile Tips</a>
       <a href="gallery.html">📸 Gallery</a>
     </nav>
   </header>
@@ -194,12 +246,16 @@
     <h2>Our Happy Smiles 🦷✨</h2>
 
     <!-- Gallery Carousel -->
-    <div class="gallery-carousel">
-      <img src="images/smile1.jpg" alt="Bright smile 1">
-      <img src="images/smile2.jpg" alt="Bright smile 2">
-      <img src="images/smile3.jpg" alt="Bright smile 3">
-      <img src="images/smile4.jpg" alt="Bright smile 4">
-      <img src="images/smile5.jpg" alt="Bright smile 5">
+    <div class="gallery-wrapper">
+      <button id="prevGallery" class="gallery-nav">❮</button>
+      <div class="gallery-carousel">
+        <img src="images/smile1.jpg" alt="Bright smile 1">
+        <img src="images/smile2.jpg" alt="Bright smile 2">
+        <img src="images/smile3.jpg" alt="Bright smile 3">
+        <img src="images/smile4.jpg" alt="Bright smile 4">
+        <img src="images/smile5.jpg" alt="Bright smile 5">
+      </div>
+      <button id="nextGallery" class="gallery-nav">❯</button>
     </div>
 
     <!-- Lightbox Modal -->
@@ -222,6 +278,10 @@
         <p>“Finally, a dental resource that understands South Asian diets. Highly recommend!”</p>
         <span>- Meera P.</span>
       </div>
+
+      <!-- Navigation Arrows -->
+      <button id="prevTestimonial" class="testimonial-nav">❮</button>
+      <button id="nextTestimonial" class="testimonial-nav">❯</button>
     </div>
   </section>
 
@@ -261,11 +321,34 @@
     const testimonials = document.querySelectorAll('.testimonial');
     let currentIndex = 0;
 
-    setInterval(() => {
-      testimonials[currentIndex].classList.remove('active');
+    const showTestimonial = (index) => {
+      testimonials.forEach(t => t.classList.remove('active'));
+      testimonials[index].classList.add('active');
+    }
+
+    document.getElementById('prevTestimonial').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
+      showTestimonial(currentIndex);
+    });
+
+    document.getElementById('nextTestimonial').addEventListener('click', () => {
       currentIndex = (currentIndex + 1) % testimonials.length;
-      testimonials[currentIndex].classList.add('active');
+      showTestimonial(currentIndex);
+    });
+
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % testimonials.length;
+      showTestimonial(currentIndex);
     }, 4000);
+
+    // Gallery arrows scroll
+    const gallery = document.querySelector('.gallery-carousel');
+    document.getElementById('prevGallery').addEventListener('click', () => {
+      gallery.scrollBy({ left: -260, behavior: 'smooth' });
+    });
+    document.getElementById('nextGallery').addEventListener('click', () => {
+      gallery.scrollBy({ left: 260, behavior: 'smooth' });
+    });
   </script>
 </body>
 </html>
